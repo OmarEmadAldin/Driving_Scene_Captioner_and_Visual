@@ -4,15 +4,17 @@ Straightforward BLIP-2 image captioning over a local driving-scene dataset,
 with a simple side-by-side visualization: **image on the left, generated
 caption on the right**, rendered for every image.
 
-This is a trimmed-down version of a larger perception-grounded VQA project —
-no YOLO detector, no tracker, no grounding, no vision-only vs. grounded
-comparison. Just: load images, caption them with BLIP-2, visualize the
-result.
+This is not working like CLIP that we have used before here it describes the images itself so in case we added states of the vechile to it we can reach making VLA. But this will be mentioned Later.
 
-Built on a local sample of [BDD100K](https://bdd-data.berkeley.edu/)-style
+Built on a local sample of [BDD100K]([https://bdd-data.berkeley.edu/](https://www.kaggle.com/datasets/solesensei/solesensei_bdd100k))-style
 frames: drop images in `data/images/` (and, optionally, a BDD100K-style
 label JSON in `data/annotations/`) and the pipeline takes it from there —
 no download step required.
+
+<p align="center">
+  <img src="result/git_1.gif" width="100%" />
+  <img src="result/git_2.gif" width="100%" />
+</p>
 
 ## Model
 
@@ -25,6 +27,8 @@ params, not just "2.7B" — per Hugging Face's model memory calculator that's
 ~7.2GB in fp16, ~3.6GB in int8, and ~1.8GB in int4. `configs/config.yaml`
 defaults to **int4** (~1.8GB weights) so it fits a 4GB card. Bump to
 `load_in_8bit: true` if you have 6GB+, or turn both off for ≥8GB.
+
+Actually this was the lightest one i can use on my PC.
 
 ## Setup
 
@@ -61,17 +65,8 @@ Run end-to-end (dataset sanity-check figures, then BLIP captioning + per-image
 visualization):
 
 ```bash
-python main.py --config configs/config.yaml
-```
+python main.py (--config configs/config.yaml ) the config could be ignored as it by default use it
 
-Or step by step:
-
-```bash
-# 1. Sanity-check the sample before spending GPU time on it
-PYTHONPATH=src python src/visualize_dataset.py --config configs/config.yaml
-
-# 2. Caption every image with BLIP-2 and render image-left/caption-right figures
-PYTHONPATH=src python src/caption_and_visualize.py --config configs/config.yaml
 ```
 
 ## Output
@@ -81,6 +76,8 @@ For every image in `data/images/`, you get one figure at
 the BLIP-2 caption (and weather/time-of-day/scene, if you supplied
 annotations) on the right. The raw `{filename: caption}` mapping is also
 written to `outputs/captions/captions.json`.
+
+Also there're five random gifs of 100 images in each one and random fig image
 
 ## Repository layout
 
@@ -92,14 +89,18 @@ data/annotations/                Optional single label JSON covering all images 
 src/dataset.py                  Shared dataset/frame loader
 src/visualize_dataset.py        Dataset-overview + sample-grid sanity-check figures
 src/models/blip_baseline.py     BLIP-2 wrapper (captioning only)
-src/caption_and_visualize.py    Runs BLIP-2 over every image, saves image-left/caption-right figures
+src/caption_and_visualize.py    Runs BLIP-2 over every image, saves image-left/caption
 ```
 
-## Limitations
+## Results
+<p align="center">
+  <img src="result/random_grid.png" width="100%" />
+</p>
+---
+<p align="center">
+  <img src="result/git_3.gif" width="100%" />
+  <img src="result/git_4.gif" width="100%" />
+  <img src="result/git_5.gif" width="100%" />
+</p>
 
-- No grounding/tracker context — captions are vision-only, as plain BLIP-2
-  captioning is meant to be.
-- BLIP-2 in 4-bit trades some caption quality for VRAM headroom versus 8-bit
-  or fp16 — expect noticeably crisper captions if you run this on a bigger
-  GPU with quantization off.
 =======
