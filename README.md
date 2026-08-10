@@ -12,8 +12,8 @@ label JSON in `data/annotations/`) and the pipeline takes it from there —
 no download step required.
 
 <p align="center">
-  <img src="result/gif_1.gif" width="50%" />
-  <img src="result/gif_2.gif" width="50%" />
+  <img src="result/gif_1.gif" width="45%" />
+  <img src="result/gif_2.gif" width="45%" />
 </p>
 
 ## Model
