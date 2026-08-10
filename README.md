@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Driving-Scene BLIP Captioner
 
 Straightforward BLIP-2 image captioning over a local driving-scene dataset,
@@ -104,5 +103,3 @@ src/caption_and_visualize.py    Runs BLIP-2 over every image, saves image-left/c
   or fp16 — expect noticeably crisper captions if you run this on a bigger
   GPU with quantization off.
 =======
-# Driving_Scene_Captioner_and_Visual
->>>>>>> bfdbd1792eaffa12535f321d61e6157d94b41339
