@@ -12,8 +12,8 @@ label JSON in `data/annotations/`) and the pipeline takes it from there —
 no download step required.
 
 <p align="center">
-  <img src="result/git_1.gif" width="50%" />
-  <img src="result/git_2.gif" width="50%" />
+  <img src="result/gif_1.gif" width="50%" />
+  <img src="result/gif_2.gif" width="50%" />
 </p>
 
 ## Model
@@ -33,7 +33,7 @@ Actually this was the lightest one i can use on my PC.
 ## Setup
 
 ```bash
-git clone <this-repo>
+gif clone <this-repo>
 cd Driving_Scene_Captioner_BLIP_only
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -98,9 +98,9 @@ src/caption_and_visualize.py    Runs BLIP-2 over every image, saves image-left/c
 </p>
 ---
 <p align="center">
-  <img src="result/git_3.gif" width="30%" />
-  <img src="result/git_4.gif" width="30%" />
-  <img src="result/git_5.gif" width="30%" />
+  <img src="result/gif_3.gif" width="30%" />
+  <img src="result/gif_4.gif" width="30%" />
+  <img src="result/gif_5.gif" width="30%" />
 </p>
 
 =======
