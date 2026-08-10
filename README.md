@@ -12,8 +12,8 @@ label JSON in `data/annotations/`) and the pipeline takes it from there —
 no download step required.
 
 <p align="center">
-  <img src="result/git_1.gif" width="100%" />
-  <img src="result/git_2.gif" width="100%" />
+  <img src="result/git_1.gif" width="50%" />
+  <img src="result/git_2.gif" width="50%" />
 </p>
 
 ## Model
@@ -94,13 +94,13 @@ src/caption_and_visualize.py    Runs BLIP-2 over every image, saves image-left/c
 
 ## Results
 <p align="center">
-  <img src="result/random_grid.png" width="100%" />
+  <img src="result/random_grid.png" width="50%" />
 </p>
 ---
 <p align="center">
-  <img src="result/git_3.gif" width="100%" />
-  <img src="result/git_4.gif" width="100%" />
-  <img src="result/git_5.gif" width="100%" />
+  <img src="result/git_3.gif" width="30%" />
+  <img src="result/git_4.gif" width="30%" />
+  <img src="result/git_5.gif" width="30%" />
 </p>
 
 =======
