@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------------------
+# Central configuration for the Driving-Scene BLIP Captioner project
+# Every script reads this file so you only change settings in one place.
+# ---------------------------------------------------------------------------
+
+project:
+  name: driving-scene-blip-captioner
+  seed: 42
+
+data:
+  # Local dataset, already on disk -- no download step.
+  images_dir: data/images            # frame images (jpg/png/...)
+  annotations_dir: data/annotations  # single JSON file with weather/timeofday/scene labels (optional)
+
+models:
+  blip2:
+    # Total model (vision encoder + Q-Former + OPT-2.7b decoder) is ~3.6B
+    # params, not just "2.7B" -- per HF's model memory calculator that's
+    # ~7.2GB in fp16, ~3.6GB in int8, ~1.8GB in int4.
+    name: Salesforce/blip2-opt-2.7b
+    device: cuda              # falls back to cpu automatically if no GPU
+    dtype: float16
+    # int8 weights alone (~3.6GB) leave too little headroom on a real 4GB
+    # card once activations/KV-cache/overhead are added (expect +~20% on
+    # top of weights) -- that pushes past 4GB and risks OOM. int4 (~1.8GB
+    # weights) is the safer default here. Bump to load_in_8bit if you have
+    # more like 6GB+, or turn both off for >=8GB.
+    load_in_8bit: false
+    load_in_4bit: true
+  caption:
+    max_new_tokens: 40
+
+captions:
+  # Where per-image left-image/right-caption figures get written
+  figures_dir: outputs/captions/figures
+  # Where the raw {filename: caption} mapping gets written
+  json_path: outputs/captions/captions.json

@@ -1,0 +1,13 @@
+# Core
+transformers>=4.35.0         # Blip2ForConditionalGeneration / Blip2Processor
+accelerate>=0.30.0
+bitsandbytes>=0.43.0        # 4-bit/8-bit quantization for low-VRAM inference
+sentencepiece
+einops
+torch
+
+# Data / viz
+pillow
+matplotlib
+pyyaml
+tqdm
